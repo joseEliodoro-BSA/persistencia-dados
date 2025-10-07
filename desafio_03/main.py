@@ -1,4 +1,5 @@
 import requests
+from typing import List
 import sqlite3
 
 def conectar(name_banco: str):
@@ -16,6 +17,11 @@ def criar_tabela(table_name: str, fields: str, conn):
 
     conn.commit()
 
+def criar_elementos(table_name: str, fields:str, values: List[tuple], conn):
+    """ Cria um registro de estudante na tabela table_name """
+    #conn = conectar()
+    for value in values:
+        criar_elemento(table_name=table_name, fields=fields, values=value, conn=conn)
 
 def criar_elemento(table_name: str, fields:str, values: tuple, conn):
     """ Cria um registro de estudante na tabela table_name """
