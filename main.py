@@ -28,7 +28,7 @@ def create_student(
     db_student = models.Estudante(**student.model_dump())
     db.add(db_student)
     db.commit()
-    db.refresh(db_student)
+    db.refresh(db_student) # Atualiza a entidade de acordo com os dados mais recente gerados pelo banco
     return db_student
 
 @app.get("/estudantes/", response_model= List[schemas.EstudanteResponse])
